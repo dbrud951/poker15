@@ -23,7 +23,23 @@ public class EvaluatorTest {
                 new Card(13,Suit.CLUBS),
                 new Card(2,Suit.CLUBS)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FLUSH"));
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.Flush));
     }
+
+    @Test
+    public void Rank_2개가_동일하면_원페어다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4,Suit.CLUBS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(8,Suit.SPADES),
+                new Card(13,Suit.HEARTS),
+                new Card(2,Suit.CLUBS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.OnePair));
+    }
+
+
 }
