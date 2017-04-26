@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public class Evaluator {
     public Ranking evaluate(List<Card> cardList) {
+        boolean flush=false;
+        boolean straight=false;
 
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer,Integer> tempMap2 = new HashMap<Integer, Integer>();
@@ -59,7 +61,7 @@ public class Evaluator {
 
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
-                return Ranking.Flush;
+                flush=true;
             }
         } // 플러쉬
 
@@ -82,7 +84,7 @@ public class Evaluator {
         for (int i = 0; i < tempCard.size()-1; i ++){
             if (tempCard.get(i).getRank() + 1== tempCard.get(i + 1).getRank()) {
                 if (i == tempCard.size()-2) {
-                    return Ranking.Straight;
+                   straight=true;
                 }
             }
         }//스트레이트
@@ -97,13 +99,22 @@ public class Evaluator {
                 sameCard++;
             }
         }
-
         if(sameCard == 1){
             return Ranking.OnePair;
         }else if(sameCard == 2){
             return Ranking.TwoPairs;
         }
 
+
+        if(flush==true&&straight==true) {
+            return Ranking.StraightFlush;
+        }
+        if (flush==true&&straight==false){
+            return Ranking.Flush;
+        }
+        if(flush==false&& straight==true){
+            return Ranking.Straight;
+        }
         return Ranking.Nothing;
     }
 }
