@@ -42,6 +42,20 @@ public class EvaluatorTest {
     }
 
     @Test
+    public void RANK_5개가_1_10_11_12_13이면_마운틴이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.DIAMONDS),
+                new Card(10,Suit.HEARTS),
+                new Card(11,Suit.DIAMONDS),
+                new Card(12,Suit.CLUBS),
+                new Card(13,Suit.HEARTS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.Mountian));
+    }
+
+    @Test
     public void Rank_2개가_동일한게_두쌍이면_투페어다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
