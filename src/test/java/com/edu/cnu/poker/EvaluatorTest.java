@@ -28,7 +28,7 @@ public class EvaluatorTest {
     }
 
     @Test
-    public void Rank_2개가_동일하면_원페어다() {
+    public void Rank_2개가_동일한게_한쌍이면_원페어다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
                 new Card(4,Suit.CLUBS),
