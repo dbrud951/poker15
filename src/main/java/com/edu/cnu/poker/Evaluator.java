@@ -43,7 +43,11 @@ public class Evaluator {
                 }
             }
         } // 로얄스트레이트플러쉬
-
+        for (Integer key : tempMap2.keySet()) {
+            if (tempMap2.get(key) == 4) {
+                return Ranking.FourOfaKind;
+            }
+        }//포카드
         for (Integer key : tempMap2.keySet()) {
             if (tempMap2.get(key) == 2) {
                 for (Integer key2 : tempMap2.keySet()) {
