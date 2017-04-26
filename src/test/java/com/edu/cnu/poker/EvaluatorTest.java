@@ -40,7 +40,7 @@ public class EvaluatorTest {
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.FullHouse));
     }
-    
+
     @Test
     public void SUIT가_5개가동일하면_플러쉬다() {
         Evaluator evaluator = new Evaluator();
