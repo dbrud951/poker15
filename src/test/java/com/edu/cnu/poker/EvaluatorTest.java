@@ -94,7 +94,19 @@ public class EvaluatorTest {
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.BackStraight));
     }
-
+    @Test
+    public void RANK가_3개가동일하면_트리플이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(10,Suit.DIAMONDS),
+                new Card(10,Suit.HEARTS),
+                new Card(5,Suit.DIAMONDS),
+                new Card(10,Suit.CLUBS),
+                new Card(2,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.ThreeOfaKind));
+    }
     @Test
     public void Rank_2개가_동일한게_두쌍이면_투페어다() {
         Evaluator evaluator = new Evaluator();
