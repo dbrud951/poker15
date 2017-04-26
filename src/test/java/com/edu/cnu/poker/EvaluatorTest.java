@@ -27,6 +27,19 @@ public class EvaluatorTest {
         assertThat(result, is(Ranking.RoyalStraightFlush));
     }
     @Test
+    public void SUIT가_5개가동일하고_RANK가_연속적인_숫자이면_스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(2,Suit.DIAMONDS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(6,Suit.DIAMONDS),
+                new Card(5,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.StraightFlush));
+    }
+    @Test
     public void RANK가_4개가동일하면_포카드다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
@@ -38,7 +51,7 @@ public class EvaluatorTest {
         );
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.FourOfaKind));
-    }//포카드
+    }
     @Test
     public void RANK가_2개_3개가_동일하면_풀하우스다() {
         Evaluator evaluator = new Evaluator();
