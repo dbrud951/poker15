@@ -46,7 +46,13 @@ public class Evaluator {
             if (tempMap.get(key) == 5) {
                 return Ranking.Flush;
             }
-        }
+        } // 플러쉬
+
+        for(Integer key : tempMap2.keySet()) {
+            if (tempMap2.containsKey(1) && tempMap2.containsKey(10) && tempMap2.containsKey(11) && tempMap2.containsKey(12) && tempMap2.containsKey(13)) {
+                return Ranking.Mountian;
+            }
+        } // 마운틴
 
         int sameCard = 0; //카드 한쌍(숫자 같은거) 갯수 세는거
         for(Integer key : tempMap2.keySet()){
