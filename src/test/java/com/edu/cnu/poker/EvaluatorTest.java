@@ -28,6 +28,20 @@ public class EvaluatorTest {
     }
 
     @Test
+    public void RANK가_2개_3개가_동일하면_풀하우스다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(2,Suit.DIAMONDS),
+                new Card(2,Suit.HEARTS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(3,Suit.CLUBS),
+                new Card(3,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.FullHouse));
+    }
+    
+    @Test
     public void SUIT가_5개가동일하면_플러쉬다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
