@@ -82,9 +82,11 @@ public class Evaluator {
                 }
             }
         }//스트레이트
-
-
-
+        for (Integer key : tempMap2.keySet()) {
+            if (tempMap2.get(key) == 3) {
+                return Ranking.ThreeOfaKind;
+            }
+        }//트리플
         int sameCard = 0; //카드 한쌍(숫자 같은거) 갯수 세는거
         for(Integer key : tempMap2.keySet()){
             if(tempMap2.get(key) == 2){
