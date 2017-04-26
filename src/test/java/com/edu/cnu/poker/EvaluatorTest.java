@@ -14,6 +14,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class EvaluatorTest {
 
     @Test
+    public void SUIT가_5개가동일하고_RANK_5개가_1_10_11_12_13이면_로얄스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.CLUBS),
+                new Card(10,Suit.CLUBS),
+                new Card(11,Suit.CLUBS),
+                new Card(12,Suit.CLUBS),
+                new Card(13,Suit.CLUBS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.RoyalStraightFlush));
+    }
+
+    @Test
     public void SUIT가_5개가동일하면_플러쉬다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
@@ -25,6 +39,34 @@ public class EvaluatorTest {
         );
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.Flush));
+    }
+
+    @Test
+    public void RANK_5개가_1_10_11_12_13이면_마운틴이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.DIAMONDS),
+                new Card(10,Suit.HEARTS),
+                new Card(11,Suit.DIAMONDS),
+                new Card(12,Suit.CLUBS),
+                new Card(13,Suit.HEARTS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.Mountian));
+    }
+
+    @Test
+    public void Rank_2개가_동일한게_두쌍이면_투페어다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4,Suit.CLUBS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(13,Suit.SPADES),
+                new Card(13,Suit.HEARTS),
+                new Card(2,Suit.CLUBS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.TwoPairs));
     }
 
     @Test
@@ -41,19 +83,7 @@ public class EvaluatorTest {
         assertThat(result, is(Ranking.OnePair));
     }
 
-    @Test
-    public void Rank_2개가_동일한게_두쌍이면_투페어다() {
-        Evaluator evaluator = new Evaluator();
-        List<Card> cardList = Arrays.asList(
-                new Card(4,Suit.CLUBS),
-                new Card(4,Suit.DIAMONDS),
-                new Card(13,Suit.SPADES),
-                new Card(13,Suit.HEARTS),
-                new Card(2,Suit.CLUBS)
-        );
-        Ranking result = evaluator.evaluate(cardList);
-        assertThat(result, is(Ranking.TwoPairs));
-    }
+
 
 
 }
