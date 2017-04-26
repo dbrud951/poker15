@@ -26,7 +26,19 @@ public class EvaluatorTest {
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.RoyalStraightFlush));
     }
-
+    @Test
+    public void RANK가_4개가동일하면_포카드다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(10,Suit.DIAMONDS),
+                new Card(10,Suit.HEARTS),
+                new Card(10,Suit.SPADES),
+                new Card(10,Suit.CLUBS),
+                new Card(2,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.FourOfaKind));
+    }//포카드
     @Test
     public void RANK가_2개_3개가_동일하면_풀하우스다() {
         Evaluator evaluator = new Evaluator();
