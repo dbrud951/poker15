@@ -66,12 +66,24 @@ public class Evaluator {
         } // 마운틴
 
         for (int i = 0; i < tempCard.size()-1; i ++){
+            if(tempCard.get(0).getRank() == 1) {
+                if (tempCard.get(i).getRank() + 1 == tempCard.get(i + 1).getRank()) {
+                    if (i == tempCard.size() - 2) {
+                        return Ranking.BackStraight;
+                    }
+                }
+            }
+        }//백스트레이트
+
+        for (int i = 0; i < tempCard.size()-1; i ++){
             if (tempCard.get(i).getRank() + 1== tempCard.get(i + 1).getRank()) {
                 if (i == tempCard.size()-2) {
                     return Ranking.Straight;
                 }
             }
         }//스트레이트
+
+
 
         int sameCard = 0; //카드 한쌍(숫자 같은거) 갯수 세는거
         for(Integer key : tempMap2.keySet()){
