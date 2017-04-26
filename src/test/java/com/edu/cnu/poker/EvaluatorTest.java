@@ -81,6 +81,19 @@ public class EvaluatorTest {
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.Straight));
     }
+    @Test
+    public void RANK가_A로_시작하는_연속적인_숫자이면_백스트레이트다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(5,Suit.DIAMONDS),
+                new Card(4,Suit.HEARTS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(1,Suit.CLUBS),
+                new Card(2,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.BackStraight));
+    }
 
     @Test
     public void Rank_2개가_동일한게_두쌍이면_투페어다() {
