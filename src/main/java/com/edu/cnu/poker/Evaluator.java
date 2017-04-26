@@ -126,6 +126,6 @@ public class Evaluator {
         if(flush==false&& straight==true){
             return Ranking.Straight;
         }
-        return Ranking.Nothing;
+        return Ranking.Nopair;
     }
 }

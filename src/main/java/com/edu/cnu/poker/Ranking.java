@@ -17,6 +17,6 @@ public enum Ranking {
     StraightFlush,
     BackStraightFlush,
     RoyalStraightFlush,
-    Nothing;
+    Nopair;
 
 }
