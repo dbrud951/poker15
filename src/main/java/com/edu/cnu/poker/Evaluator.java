@@ -32,7 +32,15 @@ public class Evaluator {
 
         }
 
-
+        for(Integer key2 : tempMap2.keySet()) {
+            for (Suit key : tempMap.keySet()) {
+                if (tempMap.get(key) == 5) {
+                    if (tempMap2.containsKey(1) && tempMap2.containsKey(10) && tempMap2.containsKey(10) && tempMap2.containsKey(12) && tempMap2.containsKey(13)) {
+                        return Ranking.RoyalStraightFlush;
+                    }
+                }
+            }
+        } // 로얄스트레이트플러쉬
 
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
