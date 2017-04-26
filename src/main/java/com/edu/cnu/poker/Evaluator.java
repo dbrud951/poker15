@@ -1,5 +1,6 @@
 package com.edu.cnu.poker;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ public class Evaluator {
 
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer,Integer> tempMap2 = new HashMap<Integer, Integer>();
-
+        List<Card> tempCard = cardList;
         for (Card card : cardList) {
             if (tempMap.containsKey(card.getSuit())) {
                 Integer count = tempMap.get(card.getSuit());
@@ -31,6 +32,7 @@ public class Evaluator {
             }
 
         }
+        Collections.sort(tempCard);
 
         for(Integer key2 : tempMap2.keySet()) {
             for (Suit key : tempMap.keySet()) {
@@ -62,6 +64,14 @@ public class Evaluator {
                 return Ranking.Mountian;
             }
         } // 마운틴
+
+        for (int i = 0; i < tempCard.size()-1; i ++){
+            if (tempCard.get(i).getRank() + 1== tempCard.get(i + 1).getRank()) {
+                if (i == tempCard.size()-2) {
+                    return Ranking.Straight;
+                }
+            }
+        }//스트레이트
 
         int sameCard = 0; //카드 한쌍(숫자 같은거) 갯수 세는거
         for(Integer key : tempMap2.keySet()){
