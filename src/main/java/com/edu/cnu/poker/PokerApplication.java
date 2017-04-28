@@ -70,12 +70,10 @@ public class PokerApplication {
         Evaluator evaluator = new Evaluator();
         String userResult;
         String dealerResult;
-        List<Card> userList = null;
+        List<Card> userList = userHand.getCardList();
         List<Card> dealerList = dealerHand.getCardList();
 
-        for(int i=0;i<5;i++){
-            userList.add(userHand.showCard(i));
-        }
+        System.out.println(" ");
 
         int userPoint;
         int dealerPoint;

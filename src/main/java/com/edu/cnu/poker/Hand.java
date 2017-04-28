@@ -34,10 +34,6 @@ public class Hand {
         }
     }
 
-    public Card showCard(int i){
-        return cardList.get(i);
-    }
-
     public List<Card> getCardList(){
         return cardList;
     }
