@@ -24,4 +24,22 @@ public class Hand {
     public int getTotalCard() {
         return cardList.size();
     }
+
+    public Card getCard(){
+        if(cardList.size()!=0){
+            return cardList.remove(0);
+        }else{
+            System.out.println("더 이상 카드가 없습니다.");
+            return null;
+        }
+    }
+
+    public Card showCard(int i){
+        return cardList.get(i);
+    }
+
+    public List<Card> getCardList(){
+        return cardList;
+    }
+
 }

@@ -5,6 +5,7 @@ package com.edu.cnu.poker;
  */
 public enum Ranking {
 
+    Nopair,
     OnePair,
     TwoPairs,
     ThreeOfaKind,
@@ -16,7 +17,6 @@ public enum Ranking {
     FourOfaKind,
     StraightFlush,
     BackStraightFlush,
-    RoyalStraightFlush,
-    Nopair;
+    RoyalStraightFlush;
 
 }

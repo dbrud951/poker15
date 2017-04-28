@@ -99,6 +99,7 @@ public class Evaluator {
                 }
             }
         }//스트레이트
+
         for (Integer key : tempMap2.keySet()) {
             if (tempMap2.get(key) == 3) {
                 return Ranking.ThreeOfaKind;
@@ -119,11 +120,9 @@ public class Evaluator {
 
         if(flush==true&&straight==true) {
             return Ranking.StraightFlush;
-        }
-        if (flush==true&&straight==false){
+        }else if (flush==true&&straight==false){
             return Ranking.Flush;
-        }
-        if(flush==false&& straight==true){
+        }else if(flush==false&& straight==true){
             return Ranking.Straight;
         }
         return Ranking.Nopair;
