@@ -40,13 +40,13 @@ public class PokerApplication {
             }
             whoIsWin = playPoker();
             if(whoIsWin == 1){
-                System.out.println("You got Money!");
+                System.out.println("\nYou got Money!");
                 money = money + bet;
             }else if(whoIsWin == 2){
-                System.out.println("You lose Money. Thanks!");
+                System.out.println("\nYou lose Money. Thanks!");
                 money = money - bet;
             }else if(whoIsWin == 3){
-                System.out.println("You push with Dealer.");
+                System.out.println("\nYou push with Dealer.");
             }else{
                 System.out.println("Die.");
             }
