@@ -1,5 +1,6 @@
 package com.edu.cnu.poker;
 
+import java.util.List;
 import java.util.Scanner;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
@@ -69,6 +70,12 @@ public class PokerApplication {
         Evaluator evaluator = new Evaluator();
         String userResult;
         String dealerResult;
+        List<Card> userList = null;
+        List<Card> dealerList = dealerHand.getCardList();
+
+        for(int i=0;i<5;i++){
+            userList.add(userHand.showCard(i));
+        }
 
         int userPoint;
         int dealerPoint;
@@ -79,8 +86,8 @@ public class PokerApplication {
         Scanner sc = new Scanner(System.in);
 
         while(true) {
-            if(userHand.getTotalCard() == 0){
-                System.out.println("No more Cards... Can't Open.");
+            if(userHand.getTotalCard() == 2){
+                System.out.println("You can't open no more cards.");
             }else{
                 System.out.print("Your cards are : ");
                 Card userCard = userHand.getCard();
@@ -100,8 +107,22 @@ public class PokerApplication {
             }while(a != 'O' && a != 'G' && a != 'D');
 
             if(a == 'O'){//open
-                System.out.println("Another Card is Open...");
+                System.out.println("Another Card is Opened...");
             }else if(a == 'G'){//go
+
+                System.out.print("Your Card : ");
+                for(int i=0;i<userList.size();i++){
+                    System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.print("Dealer's Card : ");
+                for(int i=0;i<dealerList.size();i++){
+                    System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
 
                 userPoint = rankPoker(userResult);
                 dealerPoint = rankPoker(dealerResult);
