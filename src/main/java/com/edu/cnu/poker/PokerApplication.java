@@ -70,14 +70,19 @@ public class PokerApplication {
         Evaluator evaluator = new Evaluator();
         String userResult;
         String dealerResult;
-        List<Card> userList = userHand.getCardList();
-        List<Card> dealerList = dealerHand.getCardList();
+        List<Card> userList = null;
+        List<Card> dealerList = null;
 
         int userPoint;
         int dealerPoint;
 
         userResult = evaluator.evaluate(userHand.getCardList()).toString();
         dealerResult = evaluator.evaluate(dealerHand.getCardList()).toString();
+
+        for(int i=0; i < 5;i++){
+            userList.add(userHand.showCard(i));
+            dealerList.add(dealerHand.showCard(i));
+        }
 
         Scanner sc = new Scanner(System.in);
 
