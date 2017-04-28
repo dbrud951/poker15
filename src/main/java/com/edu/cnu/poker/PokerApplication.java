@@ -70,19 +70,14 @@ public class PokerApplication {
         Evaluator evaluator = new Evaluator();
         String userResult;
         String dealerResult;
-        List<Card> userList = null;
-        List<Card> dealerList = null;
+        List<Card> userList = userHand.getCardList();
+        List<Card> dealerList = dealerHand.getCardList();
 
         int userPoint;
         int dealerPoint;
 
         userResult = evaluator.evaluate(userHand.getCardList()).toString();
         dealerResult = evaluator.evaluate(dealerHand.getCardList()).toString();
-
-        for(int i=0; i < 5;i++){
-            userList.add(userHand.showCard(i));
-            dealerList.add(dealerHand.showCard(i));
-        }
 
         Scanner sc = new Scanner(System.in);
 
@@ -111,14 +106,14 @@ public class PokerApplication {
                 System.out.println("Another Card is Opened...");
             }else if(a == 'G'){//go
 
-                System.out.print("Your Card : ");
+                System.out.print("The rest of your cards... : ");
                 for(int i=0;i<userList.size();i++){
                     System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
                 }
 
                 System.out.println(" ");
 
-                System.out.print("Dealer's Card : ");
+                System.out.print("The rest of dealer's cards...: ");
                 for(int i=0;i<dealerList.size();i++){
                     System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
                 }
@@ -139,6 +134,23 @@ public class PokerApplication {
                     return 3;
                 }
             }else{//die
+
+                System.out.print("The rest of your cards... : ");
+                for(int i=0;i<userList.size();i++){
+                    System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.print("The rest of dealer's cards...: ");
+                for(int i=0;i<dealerList.size();i++){
+                    System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.println(" You : "+userResult + "\n Dealer : "+dealerResult);
+
                 return 4;
             }
 
