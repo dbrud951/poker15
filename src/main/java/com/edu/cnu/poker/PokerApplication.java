@@ -73,8 +73,6 @@ public class PokerApplication {
         List<Card> userList = userHand.getCardList();
         List<Card> dealerList = dealerHand.getCardList();
 
-        System.out.println(" ");
-
         int userPoint;
         int dealerPoint;
 
@@ -131,7 +129,7 @@ public class PokerApplication {
                 }else if(userPoint < dealerPoint){
                     System.out.println("You Lose!");
                     return 2;
-                }else{
+                }else{//무승부
 //                    System.out.println("Push.");
                     return 3;
                 }
@@ -144,7 +142,7 @@ public class PokerApplication {
 
     }//playPoker의 끝
 
-    static int rankPoker(String ranking){
+    static int rankPoker(String ranking){//족보의 순위를 정해주는 메소드
         if(ranking.equals("OnePair")){
             return 1;
         }else if(ranking.equals("TwoPairs")){
